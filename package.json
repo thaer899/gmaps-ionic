@@ -1,0 +1,23 @@
+{
+  "name": "EventServer",
+  "version": "0.1.0",
+  "description": "EventServer",
+  "main": "event-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified! Configure in package.json\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "node.js",
+    "eclipse",
+    "nodeclipse"
+  ],
+  "dependencies":{
+  	"body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.2"
+  },
+  "author": "",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
