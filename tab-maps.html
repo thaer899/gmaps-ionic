@@ -1,0 +1,39 @@
+<ion-view view-title="Dashboard" >
+    <ion-content class="map-container" id="abc">
+
+        <div  style="z-index: 999; position: absolute; right: 0; background-color: rgba(0,0,0,0.3);" class="range">
+            <i class="icon ion-volume-low"></i>
+            <input type="range" name="volume" ng-model="range.value" min="1" max="40">
+            <i class="icon ion-volume-high"></i>
+        </div>
+
+<!--        <label style="z-index: 999; top:70px; right: 0; background-color: rgba(0,0,0,0.3);" class="item item-input item-select">
+            <div class="input-label">
+                {{selectType.selected.displayName}}
+            </div>
+            <select ng-model="selectType.selected" ng-options="option.displayName for option in selectType.options track by option.type">
+
+            </select>
+
+        </label>-->
+        <div style="z-index: 999; top:70px; right: 0; background-color: rgba(0,0,0,0.3);" class="item item-select">
+            <select ng-model="selectType.selected" ng-options="option.displayName for option in selectType.options track by option.type">
+
+            </select>
+        </div>
+
+
+
+
+        <ui-gmap-google-map events="map.events" center='map.center' zoom='map.zoom' control="map.mapControl">
+<!--            <ui-gmap-markers models="markerArray" coords="'coords'" fit='true'>
+                <ui-gmap-windows models="markerArray" show="show" templateUrl="templateUrl" templateParameter="templateParameter" isIconVisibleOnClick="isIconVisibleOnClick" closeClick="closeClick">
+                    
+                </ui-gmap-windows>
+
+            </ui-gmap-markers>-->
+            <marker></marker>
+        </ui-gmap-google-map>
+
+    </ion-content>
+</ion-view>
