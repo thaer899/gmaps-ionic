@@ -1,0 +1,47 @@
+<ion-view view-title="Nominations">
+	<ion-nav-buttons>
+		<button side="primary" class="button" ng-click="openHelp($event)">
+			About
+		</button>
+		<button class="button" ng-click="state.reordering = !state.reordering">Reorder</button>
+	</ion-nav-buttons>
+	<ion-content>
+	<ion-refresher on-refresh="load()" pulling-text="Pull to Refresh"></ion-refresher>
+		
+		<button class="button button-full button-stable" ng-click="openModal()">
+  Add a nominee
+</button>
+		<ion-list show-reorder="state.reordering">
+			<ion-item class="item-toggle" ng-repeat="nominee in nominees">
+				<ion-item ng-if="nominee.selected" ui-sref="tabs.detail({nominee: nominee.code})" >
+				<p>{{nominee.code}} </p>
+    <ion-option-button class="button-positive"
+                       ng-click="openModal()">
+      Add
+    </ion-option-button>
+				{{nominee.code}} = {{nominee.text}}
+				<span class="price" ng-if="nominee.ticker.last == nominee.ticker['24h_avg']" ng-click="openModal()">
+					{{nominee.ticker.last || '0.00'}}<br />0.00
+				</span>
+				<span class="price negative" ng-if="nominee.ticker.last < nominee.ticker['24h_avg']">
+					{{nominee.ticker.last}}<br />
+					<span class="icon ion-arrow-down-b"></span>{{nominee.ticker['24h_avg'] - nominee.ticker.last | number:2}}
+				</span>
+				<span class="price positive" ng-if="nominee.ticker.last > nominee.ticker['24h_avg']">
+					{{nominee.ticker.last}}<br />
+					<span class="icon ion-arrow-up-b"></span>
+					{{nominee.ticker.last - nominee.ticker['24h_avg'] | number:2}}
+				</span>
+			</ion-item>		
+				<label class="toggle toggle-balanced">
+					<input type="checkbox" ng-model="nominee.selected">
+						<div class="track">
+							<div class="handle"></div>
+						</div>
+					</input>
+				</label>
+				<ion-reorder-button class="ion-navicon" on-reorder="move(nominee, $fromIndex, $toIndex)"></ion-reorder-button>
+			</ion-item>
+		</ion-list>
+	</ion-content>
+</ion-view>
